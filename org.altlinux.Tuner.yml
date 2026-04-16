@@ -1,6 +1,6 @@
 app-id: org.altlinux.Tuner
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: tuner
 add-extensions:
@@ -22,6 +22,12 @@ finish-args:
   - --env=GIO_EXTRA_MODULES=/app/lib/gio/modules
   - --device=dri
 
+cleanup:
+ - /include
+ - /lib/girepository-1.0
+ - /lib/pkgconfig
+ - /share/vala
+
 modules:
   - name: dconf
     buildsystem: meson
@@ -35,20 +41,11 @@ modules:
       - /share/dbus-1
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz
-        sha256: cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533
+        url: https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz
+        sha256: 16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36
 
       - type: patch
         path: dconf-override.patch
-
-  - name: blueprint-compiler
-    cleanup:
-      - '*'
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/blueprint-compiler
-        tag: v0.18.0
 
   - name: libpeas
     buildsystem: meson
@@ -59,7 +56,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libpeas.git
-        tag: 2.0.7
+        tag: 2.2.1
+        commit: 744430715e619069b3fcb6c994f2c09257700d05
 
   - name: tuner
     builddir: true
@@ -87,8 +85,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/gnome-desktop.git
-        tag: '44.3'
-        commit: f1aba7d1ff0bd1a6bb35b03d77f56c3cc82a6024
+        tag: '44.5'
+        commit: c214a5f3ff96d6add49bd88372c0c449bcab1967
 
   - name: tuner-tweaks
     builddir: true
@@ -98,5 +96,5 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/alt-gnome/TunerTweaks.git
-        tag: 0.5.0
-        commit: 3ea544fd21765ef9437aca201622df7cfc976f7a
+        tag: 0.5.1
+        commit: b343a6741b9307134fc932370d8bb194aaf860c4
