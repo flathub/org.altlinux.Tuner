@@ -65,8 +65,8 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/alt-gnome/Tuner.git
-        tag: 0.5.0
-        commit: 81f377d10e9af3bc867bc8c7812847d00a99985b
+        tag: 0.6.7
+        commit: 6176491fc7d0866bf434e6b89e0e36e2ba6cc424
     post-install:
       - install -d /app/extensions
 
@@ -96,5 +96,5 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/alt-gnome/TunerTweaks.git
-        tag: 0.5.1
-        commit: b343a6741b9307134fc932370d8bb194aaf860c4
+        tag: 0.5.3
+        commit: ff5461ed034adfd0851238f4edcdf596c5210d77
